@@ -3,7 +3,7 @@ import random
 
 app = Flask(__name__)
 
-era = ["French Revolution", "Chola Dynasty", "WWII", "Modern", "DBZ", "Victorian"]
+era = ["French Revolution", "WWII", "Modern", "Victorian"]
 
 @app.route('/get/era')
 def get_era():

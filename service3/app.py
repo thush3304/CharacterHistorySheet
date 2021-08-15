@@ -3,7 +3,7 @@ import random
 
 app = Flask(__name__)
 
-prof = ["General", "Genius", "Leader", "Villain", "Creator", "Artist"]
+prof = ["General", "Genius", "Villain"]
 
 @app.route('/get/prof')
 def get_profession():
