@@ -1,0 +1,39 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+    <h1>Characters</h1>
+{% endblock title %}
+{% block body %}
+
+    <p>From the era <u>{{current_char.era}}</u> with the title of <u>{{ current_char.prof }}</u> your character is <u>{{ current_char.char }}</u></p>
+
+    <style>
+        td {
+            width: 150px;
+            text-align: center;
+            border: 1px solid rgb(177, 39, 39);
+            padding: 5px;
+         }
+   </style>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Era</th>
+                <th>Title</th>
+                <th>Character</th>
+            </tr>
+        </thead>    
+        <tbody>
+            {% for row in character %} 
+              <tr>
+                  <td>{{row.era}}</td>
+                  <td>{{row.prof}}</td>
+                  <td>{{row.char}}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+       
+{% endblock body %}

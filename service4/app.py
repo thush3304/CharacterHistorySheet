@@ -3,13 +3,13 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 chara = {
-    'era': {
+    'eras': {
         'French Revolution': 1,
         'WWII': 4,
         'Modern': 7,
         'Victorian': 10
     },
-    'prof': {
+    'proff': {
         'General': 5,
         'Genius': 6,
         'Villain': 7
@@ -18,10 +18,10 @@ chara = {
 
 @app.route('/post/char', methods=['POST'])
 def post_order():
-    era = request.json['era']
-    prof = request.json['prof']
+    era = request.json['eras']
+    prof = request.json['proff']
 
-    charav = chara['era'][era] + chara['prof'][prof]
+    charav = chara['eras'][era] + chara['proff'][prof]
     if charav == 6:
         charac = "Napolean Bonaparte, was a French military leader and emperor who conquered much of Europe in the early 19th century."
     elif charav == 7:
