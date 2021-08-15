@@ -15,10 +15,10 @@ def home():
     char_random = {'eras': era, 'proff': prof}
     char = requests.post('http://service4:5000/post/char', json=char_random).json()
 
-    order = Character(era=era, prof=prof, char=char)
-    db.session.add(order)
+    chara = Character(era=era, prof=prof, char=char)
+    db.session.add(chara)
     db.session.commit()
 
-    order_history = Character.query.order_by(Character.id.desc()).limit(5).all()
+    char_history = Character.query.order_by(Character.id.desc()).limit(10).all()
         
-    return render_template("home.html", orders=order_history, current_order=order)
+    return render_template("home.html", chars=char_history, current_char=chara)
