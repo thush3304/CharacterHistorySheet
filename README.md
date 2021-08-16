@@ -134,7 +134,7 @@ On the right is the initial ERD that I had developed for this project as you can
 Using Docker Swarm, I created a virtual machine network which can be accessed by the user. As the diagram shows, this network includes NGINX load-balancer which diverts the user to a VM that has the least connections.
 
 #### 4 Services:
-![image](https://user-images.githubusercontent.com/86304577/129505898-2162bb9a-7c95-4e6e-bda4-6ee722f5d697.png)
+![image](https://user-images.githubusercontent.com/86304577/129508943-8aa93164-4d24-44a1-8249-d36993c0c9c3.png)
 
 How this system works is the front-end sends GET requests to service1 and 2. This then sends the response to service 3 as a POST request, and service 3 sends its data to service 1. Lastly the front-end can send requests to the MySQL instance to INSERT the new entry.
 ### Development
