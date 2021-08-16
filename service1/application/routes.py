@@ -7,18 +7,18 @@ from .model import Character
 
 @app.route('/')
 def home():
-    dama = requests.get('http://service-2:5000/get/dama').text
-    accessory = requests.get('http://service-3:5000/get/accessories').text
+    era = requests.get('http://service2:5000/get/era').text
+    prof = requests.get('http://service3:5000/get/prof').text
 
-    print(dama, accessory)
+    print(era, prof)
 
-    price_request = {'damas': dama, 'accessories': accessory}
-    price = requests.post('http://service-4:5000/post/order', json=price_request).json()
+    char_random = {'eras': era, 'proff': prof}
+    char = requests.post('http://service4:5000/post/char', json=char_random).json()
 
-    order = Character(dama=dama, accessory=accessory, price=price)
-    db.session.add(order)
+    chara = Character(era=era, prof=prof, char=char)
+    db.session.add(chara)
     db.session.commit()
 
-    order_history = Character.query.order_by(Character.id.desc()).limit(5).all()
+    char_history = Character.query.order_by(Character.id.desc()).limit(10).all()
         
-    return render_template("home.html", orders=order_history, current_order=order)
+    return render_template("home.html", chars=char_history, current_char=chara)

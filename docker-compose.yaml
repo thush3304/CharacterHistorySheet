@@ -1,20 +1,7 @@
   
 version: "3.3"
 
-#Nginx reverse proxy
-  era-proxy:
-    container_name: era-proxy
-    image: nginx:latest
-    ports:
-    - target: 80
-      published: 80
-      protocol: tcp
-    volumes:
-      - type: bind
-        source: ./nginx/nginx.conf
-        target: /etc/nginx/nginx.conf
-    depends_on:
-      - service1
+
 services:
 
   era-db:
@@ -35,31 +22,44 @@ services:
     environment: 
       DATABASE_URI: 
     restart: on-failure
-    #deploy:
-    #  replicas: 2
+    deploy:
+      replicas: 2
     
-  service-2:
+  service2:
     container_name: "service2"
     image: thush3304/service2
     build: ./service2
-    #deploy:
-    #  replicas: 2
+    deploy:
+      replicas: 2
   
-  service-3:
+  service3:
     container_name: "service-3"
     image: thush3304/service3
     build: ./service3
-    #deploy:
-    #  replicas: 2
+    deploy:
+      replicas: 2
 
-  service-4:
+  service4:
     container_name: "service4"
     image: thush3304/service4
     build: ./service4
-    #deploy:
-    #  replicas: 2
+    deploy:
+      replicas: 2
 
-  
+  #Era proxy
+  era-proxy:
+    container_name: era-proxy
+    image: nginx:latest
+    ports:
+    - target: 80
+      published: 80
+      protocol: tcp
+    volumes:
+      - type: bind
+        source: ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+    depends_on:
+      - service1
 
 volumes:
-  dama-volume:
+  era-volume:
