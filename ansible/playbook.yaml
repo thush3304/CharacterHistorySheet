@@ -3,3 +3,20 @@
   become: true
   roles:
     - Configure NGINX
+    
+- hosts:
+    - docker-manager
+    - workers
+  become: true
+  roles:
+    - Install Dockers
+
+- hosts: docker-manager
+  become: true
+  roles: 
+    - Initialise Swarm
+  
+- hosts: workers
+  become: true
+  roles:
+    - Join Swarm
