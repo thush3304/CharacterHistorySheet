@@ -1,2 +1,11 @@
 ---
 # tasks file for Initialise Swarm
+
+- name: Initialise a new swarm with the default parameters
+  docker_swarm:
+    state: present
+  register: swarm_info
+
+- name: Debug swarm
+  debug:
+    msg: "{{ swarm_info }}"
